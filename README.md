@@ -8,8 +8,7 @@ Here's how to hack together a now playing button for Slack (until I can get some
 * Install a Greasemonkey plugin
     * Chrome - [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
 * Sign up for a Last.fm [API account](http://www.last.fm/api/account/create)
-* Configure your music player to "scrobble" to your Last.fm account
-**Note: Haven't tried these so not quite sure which services they work with*
+* Configure your music player (Spotify, probably) to "scrobble" to your Last.fm account
 * Install the userscript.js from this repo
 * Edit the userscript with your username and API key for last.fm
 
