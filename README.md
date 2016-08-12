@@ -1,6 +1,6 @@
 ## Slack Now Playing Thing ##
 
-So here's how to hack together a now playing button for Slack (until we can get some more integrations and do it a better way.
+Here's how to hack together a now playing button for Slack (until I can get some more integrations and do it a better way.
 
 ### Do this
 * Use Slack in a browser  

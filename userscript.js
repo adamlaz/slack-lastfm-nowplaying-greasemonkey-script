@@ -4,7 +4,7 @@
 // @version    0.1
 // @description  gets your last.fm now playing info and puts it in slack's chat pane
 // @match      https://*.slack.com/messages/*/
-// @copyright  2014+, nathan
+// @copyright  2016+, adam
 // ==/UserScript==
 
 
@@ -16,7 +16,7 @@ var apiKey = "your lastfm api key";
 
 ///////////////////////////////////////////////////////////////
 
-console.log('Starting LFM NP 3');
+console.log('Starting last.fm scrobbler to Slack - BY ADAMMMMMMMMMMM');
 
 var messageInput = $('#message-input');
 
@@ -57,25 +57,25 @@ var buttonCss = {
 };
 npButton.css(buttonCss);
 npButton.find('i').removeClass('ts_icon ts_icon_plus_thick');
-npButton.css('background-size', 'contain')
+npButton.css('background-size', 'contain');
 
 var lfmApiUrl = "https://ws.audioscrobbler.com/2.0/";
 
 
-var trackData = {method: 'user.getrecenttracks', user: username, api_key: apiKey, limit:1, format:'json'}
-var artistData = {method: 'artist.gettoptags', api_key: apiKey, limit:3, format:'json'}
+var trackData = {method: 'user.getrecenttracks', user: username, api_key: apiKey, limit:1, format:'json'};
+var artistData = {method: 'artist.gettoptags', api_key: apiKey, limit:3, format:'json'};
 
 $('#footer #messages-input-container').css('left', '108px');
 
 
 
 var makePost = function(name, album, artist, genre, url, imgUrl){
-	return '[ *' + name + '* ] _by_ [ *' + artist + '* ] _on_ [ *' + album + '* ] [_' + genre + '_]- ' + imgUrl; 
+    return '[ *' + name + '* ] _by_ [ *' + artist + '* ] _on_ [ *' + album + '* ] [_' + genre + '_]- ' + imgUrl; 
 };
 
 var randomToken = function(){
-	return Math.random().toString(36).substring(7);
-}
+    return Math.random().toString(36).substring(7);
+};
 
 var npButtonClick = function(e) {
     $.get(lfmApiUrl, trackData, function( responseData ) {
@@ -83,12 +83,12 @@ var npButtonClick = function(e) {
         
         //could return an array despite the limit
         if(track.length) {
-        	track = track[0];
+            track = track[0];
         }
         
-		var album = track.album['#text'];
-		var name = track.name;
-        var artist = track.artist['#text']
+        var album = track.album['#text'];
+        var name = track.name;
+        var artist = track.artist['#text'];
         var url = track.url;
         var imgUrl = track.image[2]['#text'] + "?t=" + randomToken();
         
@@ -100,18 +100,15 @@ var npButtonClick = function(e) {
          
             var genre = tag1 + ", " + tag2 + ", " + tag3;
             messageInput.val(makePost(name, album, artist, genre, url, imgUrl));
-        	messageInput.submit();
+            messageInput.submit();
         });
     });
-	
+    
 };
 
 $( document ).ready(function(){
     npButton.prependTo('#footer');
-	npButton.click(npButtonClick);
+    npButton.click(npButtonClick);
 });
-
-
-
 
 
