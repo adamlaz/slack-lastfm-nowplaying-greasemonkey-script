@@ -15,3 +15,4 @@ Here's how to hack together a now playing button for Slack (until I can get some
 That should be it.. Now press the music button in Slack to paste your current / last scrobble song to the chat.  
 
 I haven't tested this on anything but Chrome with Spotify so.. feel free to ask any questions or make changes to stuff.
+![functional screenshot][https://i.imgur.com/cuqOh8Z.gif]
